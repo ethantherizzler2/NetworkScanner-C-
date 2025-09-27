@@ -14,7 +14,7 @@ class Program
         string? subnetArg = args.Length > 0 ? args[0] : null;
         var results = await scanner.RunAsync(subnetArg,
             maxConcurrentPings: 200,
-            portsToProbe: new int[] { 22, 80, 443, 3389 }, // tweak to your needs
+            portsToProbe: new int[] { 22, 80, 443, 3389 }, // can change this
             probePortTimeoutMs: 250);
 
         string outCsv = Path.Combine(Directory.GetCurrentDirectory(), $"scan_{DateTime.UtcNow:yyyyMMdd_HHmmss}.csv");
@@ -25,7 +25,8 @@ class Program
 
         Console.WriteLine($"Scan done. CSV: {outCsv}");
         Console.WriteLine($"JSON: {outJson}");
-        Console.WriteLine("Example: run `dotnet run -- 192.168.1.0/24` to scan that subnet explicitly.");
+        Console.WriteLine("Example: run `dotnet run -- 192.168.1.0/24` to scan that subnet only");
         return 0;
     }
 }
+
