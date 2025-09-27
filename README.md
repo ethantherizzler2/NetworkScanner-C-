@@ -9,5 +9,5 @@ async local network scanner written in C#
 - Reverse DNS lookups
 - MAC via ARP (
 - CSV / JSON export
-- with hooks for "cool stuff" (call web APIs visualize)
+- with hooks for fun (call web APIs visualize)
 
