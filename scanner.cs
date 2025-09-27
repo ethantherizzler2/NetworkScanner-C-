@@ -49,7 +49,6 @@ namespace NetworkScanner.Scanner
 
             await Task.WhenAll(tasks);
 
-            // Sorted by alive first, then ip
             return results.OrderByDescending(r => r.IsAlive).ThenBy(r => IPAddress.Parse(r.Ip).GetAddressBytes().Aggregate(0, (acc, b) => acc * 256 + b)).ToList();
         }
 
@@ -224,3 +223,4 @@ namespace NetworkScanner.Scanner
         }
     }
 }
+
