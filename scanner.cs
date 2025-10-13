@@ -199,7 +199,7 @@ namespace NetworkScanner.Scanner
             if (hostBits <= 0) { yield return ip.ToString(); yield break; }
 
             uint numberOfIps = (uint)(1 << hostBits);
-            // start at network + 1, end at broadcast -1 (if large networks you might want different behavior)
+            // start at network + 1, end at broadcast -1 (if large networks you gota do different behavior)
             uint start = ipUint + 1;
             uint last = ipUint + numberOfIps - 2;
             for (uint current = start; current <= last; current++)
@@ -223,4 +223,5 @@ namespace NetworkScanner.Scanner
         }
     }
 }
+
 
