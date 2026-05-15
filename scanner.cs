@@ -64,7 +64,7 @@ namespace NetworkScanner.Scanner
                 res.IsAlive = reply.Status == IPStatus.Success;
                 if (res.IsAlive) res.PingMs = reply.RoundtripTime;
             }
-            catch {  } // ignore
+            catch {  }
 
             if (res.IsAlive)
             {
@@ -129,7 +129,6 @@ namespace NetworkScanner.Scanner
             await File.WriteAllTextAsync(path, sb.ToString(), Encoding.UTF8);
         }
 
-        //  guess local IPv4 + netmask 
         private string? GetLocalSubnetCidr()
         {
             foreach (var ni in NetworkInterface.GetAllNetworkInterfaces())
@@ -186,7 +185,7 @@ namespace NetworkScanner.Scanner
             return count;
         }
 
-        // Expand CIDR to individual IPs (skips network and broadcast ts ahh)
+        //  CIDR to individual ips - skips network and broadcast 
         public static IEnumerable<string> CidrToIpRange(string cidr)
         {
             var parts = cidr.Split('/');
@@ -199,7 +198,7 @@ namespace NetworkScanner.Scanner
             if (hostBits <= 0) { yield return ip.ToString(); yield break; }
 
             uint numberOfIps = (uint)(1 << hostBits);
-            // start at network + 1, end at broadcast -1 (if large networks you gota do different behavior)
+            // if large networks you gota do different behavior
             uint start = ipUint + 1;
             uint last = ipUint + numberOfIps - 2;
             for (uint current = start; current <= last; current++)
