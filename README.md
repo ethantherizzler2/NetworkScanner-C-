@@ -1,13 +1,11 @@
-# NetworkScanner — local network scanner
+# NetworkScanner
 
-async local network scanner written in C#
+local network scanner written in C#
 
-## stuff
-- Auto-detect local IPv4 / mask -> CIDR
-- Async ping sweep (throttled)
-- Optional port probing
-- Reverse DNS lookups
-- MAC via ARP (
-- CSV / JSON export
-- with hooks for fun (call web APIs visualize)
-
+## includes
+- async ping scanning
+- port scanning
+- reverse DNS
+- ARP MAC lookup
+- JSON / CSV export
+- auto local subnet detection
